@@ -1,0 +1,11 @@
+{
+    "name": "letsnet/mvc",
+    "type": "library",
+    "authors": [
+        {
+            "name": "hegelakos",
+            "email": "hegel.akos@letsnet.hu"
+        }
+    ],
+    "require": {}
+}
