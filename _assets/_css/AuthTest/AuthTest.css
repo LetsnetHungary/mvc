@@ -1,0 +1,43 @@
+.login__section {
+  height:100vh;
+  width: calc(100vw + 0px);
+  background-image: url('/_assets/_img/AuthTest/authbackground2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.login__holder {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__holder h1 {
+  font-size: 20px;
+  color: #FFF;
+}
+
+.login__holder div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login__holder div *{
+  margin: 5px;
+  color: white;
+}
+
+.li {
+  background-color: rgb(68, 68, 68);
+}
+
+@media (max-width: 700px) {
+  .login__holder h1 {
+    font-size:15px;
+  }
+}
