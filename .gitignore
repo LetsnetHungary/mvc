@@ -2,3 +2,7 @@
 ######################
 .DS_STORE
 .DS_STORE?
+
+# VENDOR #
+##########
+/vendor/
