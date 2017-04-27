@@ -40,9 +40,7 @@ use Exception;
         public function prepareCredentials() {
             //$this->e = has_specchar($this->aemail);
             //$this->p = has_specchar($this->apassword);
-
             //do some magic (XSS INJECTION)
-
             $this->e = $this->aemail;
             $this->p = $this->apassword;
             unset($this->aemail);
@@ -55,5 +53,8 @@ use Exception;
             $credentials["email"] = $this->e;
             $credentials["passw"] = $this->p;
             return $credentials;
+        }
+
+        public function setSession() {
         }
     }

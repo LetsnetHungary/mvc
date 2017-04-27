@@ -27,4 +27,18 @@ namespace CoreApp;
 			session_destroy();
     }
 
+		public static function setArray($array) {
+			if(is_object($array)) {
+				foreach ($array as $key => $value) {
+					self::set($key, $value);
+				}
+			}
+			else {
+				$c_array = count($array);
+				for($i = 0; $i < $c_array; $i++) {
+					echo "ilyet még nem tudunk";
+				}
+			}
+		}
+
 	}
