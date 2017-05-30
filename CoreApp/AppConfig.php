@@ -3,82 +3,37 @@
 namespace CoreApp;
 
 	class AppConfig {
+			private static $server_appconfig_file = "App/_config/_server_appconfig.json";
+			private static $development_appconfig_file = "App/_config/_development_appconfig.json";
 
-        private static $appconfigfile = "App/_config/_appconfig.json";
-
-				public $AppConfig = array(
-
-					"appname" => "Letset",
-					"author" => "Hegel Ákos",
-					"version" => 2.0
-
-				);
-
-				private static function getConfigFile() {
-            $config = file_get_contents(self::$appconfigfile);
-            $config = json_decode($config);
-            return($config);
-        }
-
-				public static function getDB($db) {
-					$config = self::getConfigFile();
-					return($config->database->$db);
+			public static function appConfigFile($bool) {
+				if($bool) {
+					if(APPCONFIG == "development") {
+						return(json_decode(file_get_contents(self::$development_appconfig_file), TRUE));
+					}
+					else if(APPCONFIG == "server") {
+						return(json_decode(file_get_contents(self::$server_appconfig_file), TRUE));
+					}
 				}
+				else {
+					if(APPCONFIG == "development") {
+						return(json_decode(file_get_contents(self::$development_appconfig_file)));
+					}
+					else if(APPCONFIG == "server") {
+						return(json_decode(file_get_contents(self::$server_appconfig_file)));
+					}
+				}
+			}
 
-        public static function dbConfig() {
-            $config = self::getConfigFile();
-            return($config->database->basic);
-        }
+			public static function getData($arrowString) {
+				$config = self::appConfigFile(FALSE);
 
-        public static function getVisitorsDB() {
-            $config = self::getConfigFile();
-            return($config->database->visitorsDB);
-        }
+				$a = arrowString($arrowString);
+				$c_a = count($a);
 
-				public static function getAuthenticationDB() {
-            $config = self::getConfigFile();
-            return($config->database->autchenticationDB);
-        }
-
-				public static function getCMSDB() {
-            $config = self::getConfigFile();
-            return($config->database->cmsDB);
-        }
-
-				public static function getWebpageDB() {
-            $config = self::getConfigFile();
-            return($config->database->webpageDB);
-        }
-
-        public static function getFirstPage() {
-            $config = self::getConfigFile();
-            return($config->firstpage);
-        }
-
-        public static function getAuthentication() {
-            $config = file_get_contents("App/_config/_appconfig.json");
-            $config = json_decode($config);
-            return($config->authentication);
-        }
-
-        public static function pregmatch($type) {
-            $config = self::getConfigFile();
-            if($type == "special") {
-                //return($config->pregmatchspecial);
-            }
-        }
-
-        public static function getTimeZone() {
-            $config = self::getConfigFile();
-            return($config->timezone);
-        }
-
-        public static function getConfigDB() {
-            $config = self::getConfigFile();
-            return($config->database->configDB);
-        }
-
-				public static function getDebug() {
-            	return false;
-        }
+				for($i = 0; $i < $c_a; $i++) {
+					$config = $config->{$a[$i]};
+				}
+				return($config);
+			}
 	}

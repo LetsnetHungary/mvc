@@ -26,3 +26,33 @@ function createDir($path) {
   $return = createDir($prev_path);
   return ($return && is_writable($prev_path)) ? mkdir($path) : false;
 }
+
+function arrowString($string) {
+  $array = explode("=>", $string);
+  return $array;
+}
+
+function ClassName($class) {
+  return substr(strrchr($class, "\\"), 1);
+}
+
+function empty_recursive($array) {
+  $array = array_values($array);
+  $c_a = count($array);
+  if($c_a == 0) {
+    return true;
+  }
+  for($i=0; $i < $c_a; $i++) {
+    if(is_array($array[$i])) {
+      if(empty_recursive($array[$i])) {
+        return true;
+      }
+    }
+    else {
+      if(empty($array[$i]) || $array[$i] == "") {
+        return true;
+      }
+    }
+  }
+  return false;
+}

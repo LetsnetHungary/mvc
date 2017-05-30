@@ -6,7 +6,6 @@ namespace CoreApp;
 		protected $a;
 
 		public function __construct($objectname) {
-			$this->model = $this->loadModel($objectname);
 			$this->a = $this->setAuthentication();
 			$this->v = new View($objectname);
 			$this->v->setPageConfig(SEO::getPageConfig($objectname));

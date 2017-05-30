@@ -1,26 +1,41 @@
 [
     {
-        "name": "letsnet/starter",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "os/php-excel",
+        "version": "2.1",
+        "version_normalized": "2.1.0.0",
+        "target-dir": "PHPExcel",
         "source": {
             "type": "git",
-            "url": "https://github.com/LetsnetHungary/mvcstart.git",
-            "reference": "bf8c63c67743ded7f646d3aaa1e837e1d8ed4d15"
+            "url": "https://github.com/ouardisoft/PHPExcel.git",
+            "reference": "1dcb280a82b94943a00d478eac099542aa0be2bd"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/LetsnetHungary/mvcstart/zipball/bf8c63c67743ded7f646d3aaa1e837e1d8ed4d15",
-            "reference": "bf8c63c67743ded7f646d3aaa1e837e1d8ed4d15",
+            "url": "https://api.github.com/repos/ouardisoft/PHPExcel/zipball/1dcb280a82b94943a00d478eac099542aa0be2bd",
+            "reference": "1dcb280a82b94943a00d478eac099542aa0be2bd",
             "shasum": ""
         },
-        "time": "2017-02-13T18:58:40+00:00",
+        "require": {
+            "php": ">=5.2.6"
+        },
+        "time": "2012-05-02T20:42:37+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
-        "description": "You must require this to your Letsnet MVC project..."
+        "authors": [
+            {
+                "name": "LOUARDI Abdeltif",
+                "email": "louardi.abdeltif@yahoo.fr",
+                "homepage": "http://phphub.net"
+            }
+        ],
+        "description": "PHP Excel Library",
+        "homepage": "http://github.com/ouardisoft/PHPExcel",
+        "keywords": [
+            "excel"
+        ]
     }
 ]

@@ -1,11 +1,13 @@
 {
-    "name": "letsnet/mvc",
-    "type": "library",
-    "authors": [
-        {
-            "name": "hegelakos",
-            "email": "hegel.akos@letsnet.hu"
-        }
-    ],
-    "require": {}
+    "require": {
+        "os/php-excel": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "CoreApp\\": "CoreApp/",
+            "CoreApp\\Controller\\" : "CoreApp/_controllers/",
+            "CoreApp\\Model\\" : "CoreAll/_models/"
+        },
+        "files" : ["CoreApp/GF.php"]
+    }
 }

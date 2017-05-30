@@ -13,6 +13,9 @@ use Exception;
 
         private $e;
         private $p;
+        private $uniquekey;
+        private $allow;
+        private $sitekey;
 
         public function __get($key) {
           if(property_exists($this, $key)) {
@@ -53,8 +56,5 @@ use Exception;
             $credentials["email"] = $this->e;
             $credentials["passw"] = $this->p;
             return $credentials;
-        }
-
-        public function setSession() {
         }
     }

@@ -4,25 +4,23 @@ namespace CoreApp;
 
 	class User {
 
-		/* non static object oriented way kéne */
-
-		public static  function LoggedUser() {
+		public static function LoggedUser() {
 			return Session::get("logged_user");
 		}
 
-		public static  function UniqueKey() {
+		public static function UniqueKey() {
 			return Session::get("uniquekey");
 		}
 
-		public static  function DeviceKey() {
+		public static function DeviceKey() {
 			return Session::get("devicekey");
 		}
 
-		public static  function Allow() {
+		public static function Allow() {
 			return Session::get("allow");
 		}
 
-		public static  function SiteKey() {
+		public static function SiteKey() {
 			return Session::get("webpage");
 		}
 	}

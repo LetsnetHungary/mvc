@@ -1,9 +1,17 @@
-# OS GENETARED FILES #
-######################
-.DS_STORE
-.DS_STORE?
+composer.phar
 
-# VENDOR #
-##########
-/vendor/
-vendor
+# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+
+
+# hidden OS files
+
+#OSX
+
+.DS_Store
+*DS_Store
+
+# for server
+
+App/_config/_development_appconfig.json

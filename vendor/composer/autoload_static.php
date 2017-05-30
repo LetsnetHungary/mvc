@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit8140dbf49c4f605b69186a4ff60de746
 {
     public static $files = array (
-        'a4406ac832814ce6b4087f95745515ed' => __DIR__ . '/../..' . '/CoreApp/GF.php',
+        '3ed6bc0e6d987e0ad49a3dbcabd5f1d7' => __DIR__ . '/../..' . '/CoreApp/GF.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -16,14 +16,13 @@ class ComposerStaticInit8140dbf49c4f605b69186a4ff60de746
             'CoreApp\\Model\\' => 14,
             'CoreApp\\Controller\\' => 19,
             'CoreApp\\' => 8,
-            'Controller\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
         'CoreApp\\Model\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/CoreApp/_models',
+            0 => __DIR__ . '/../..' . '/CoreAll/_models',
         ),
         'CoreApp\\Controller\\' => 
         array (
@@ -32,12 +31,6 @@ class ComposerStaticInit8140dbf49c4f605b69186a4ff60de746
         'CoreApp\\' => 
         array (
             0 => __DIR__ . '/../..' . '/CoreApp',
-        ),
-        'Controller\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Controllers/ViewControllers',
-            1 => __DIR__ . '/../..' . '/Controllers/InnerControllers',
-            2 => __DIR__ . '/../..' . '/Controllers/RequestControllers',
         ),
     );
 

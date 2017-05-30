@@ -8,7 +8,7 @@ namespace CoreApp;
 			$u = rtrim($url, '/');
 			$u = explode('/', $u);
 
-			$u[0] = isset($u[0]) ? $u[0] : "Index";
+			$u[0] = isset($u[0]) ? $u[0] : "AuthTest";
 			$u[1] = isset($u[1]) ? $u[1] : 0;
 			$u[2] = isset($u[2]) ? $u[2] : 0;
 

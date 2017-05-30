@@ -8,17 +8,26 @@ use \CoreApp;
 		/* - Constructor -- main CoreApp InnerController --  - */
 
 		public function __construct() {
-		    parent::__construct($this->ClassName(__CLASS__));
+			parent::__construct(ClassName(__CLASS__));
+			$this->model = $this->loadModel(ClassName(__CLASS__));
 		}
 
-		/* - User SESSIONS block - */
-
-		public function UserSessions($c) {
-			return $this->getUserSessions($c);
+		public function userAllowedToModule($view, $back) {
+			if($this->model->userAllowedToModule($view)) {
+				return true;
+			}
+			else {
+				header("location:../$back");
+			}
 		}
 
-		private function getUserSessions($c) {
-			return $this->model->getUserSessions($c);
+		public function userAllowedToAPIFunction($api, $function, $back) {
+			if($this->model->userAllowedToAPIFunction($api, $function)) {
+				return true;
+			}
+			else {
+				header("location:../$back");
+			}
 		}
 
 		/* - User MODULES block - */
@@ -31,13 +40,15 @@ use \CoreApp;
 			return $this->model->getModules();
 		}
 
-    public function getData() {
+		public function getPageModules($viewid) {
+			return $this->model->getPageModules($viewid);
+		}
+
+		/* - User DATA block - */
+
+    public function UserData() {
       return $this->model->getUserData();
     }
-
-		public function getPageModules($view) {
-			return $this->model->getPageModules($view);
-		}
 
 		public function logout() {
 			$this->model->logout();

@@ -19,25 +19,65 @@ namespace CoreApp;
       }
 		}
 
-		public static function unnset($key) {
-			session_unset($_SESSION[$key]);
-		}
-
-		public static function destroy() {
-			session_destroy();
+		public static function destroy($a) {
+			if(is_object($a)) {
+				foreach ($a as $key => $value) {
+					unset($_SESSION[$value]);
+				}
+			}
+			else if(is_array($a)) {
+				$c_a = count($a);
+				for($i=0; $i<$c_a; $i++) {
+					unset($_SESSION[$a[$i]]);
+				}
+			}
+			else {
+				unset($_SESSION[$a]);
+			}
     }
 
-		public static function setArray($array) {
+		public static function isSessionSet($a) {
+			if(is_array($a)) {
+				$c_a = count($a);
+				for($i = 0; $i < $c_a; $i++) {
+					if(isset($_SESSION[$a[$i]]) && !empty($_SESSION[$a[$i]])) {
+						continue;
+					}
+					else {
+						return false;
+					}
+				}
+			}
+			else if(is_object($a)) {
+				foreach ($a as $key => $value) {
+					if(isset($_SESSION[$value]) && !empty($_SESSION[$value])) {
+						continue;
+					}
+					else {
+						return false;
+					}
+				}
+			}
+			else {
+				if(!isset($_SESSION[$a])) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public static function setJSONArray($array) {
 			if(is_object($array)) {
 				foreach ($array as $key => $value) {
 					self::set($key, $value);
 				}
 			}
-			else {
-				$c_array = count($array);
-				for($i = 0; $i < $c_array; $i++) {
-					echo "ilyet még nem tudunk";
-				}
+		}
+
+		public static function setArray($arr1, $arr2) {
+			$c_a = count($arr1);
+			for($i = 0; $i < $c_a; $i++) {
+				$_SESSION[$arr1[$i]] = $arr2[$i];
 			}
 		}
 
