@@ -1,4 +1,5 @@
 {
+    name : "Letsnet/mvc",
     "require": {
         "os/php-excel": "^2.1"
     },
