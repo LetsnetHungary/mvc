@@ -1,8 +1,5 @@
 {
     "name" : "letsnet/mvc",
-    "require": {
-        "os/php-excel": "^2.1"
-    },
     "autoload": {
         "psr-4": {
             "CoreApp\\": "CoreApp/",
