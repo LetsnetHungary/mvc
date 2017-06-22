@@ -14,4 +14,4 @@ composer.phar
 
 # for server
 
-App/_config/__appconfig_real.json
+App/_config/_appconfig_real.json
