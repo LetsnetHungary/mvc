@@ -4,14 +4,9 @@ ini_set('display_errors', 1);
 
 require_once("vendor/autoload.php");
 
-define("APPCONFIG", "development");
-// 'letsnet', 'serverlocal', 'fkinglocal'
-define("SERVER", "fkinglocal");
-
-CoreApp\ServerHandler::sitekey();
+define("SERVER", CoreApp\AppConfig::getData("server"));
 
 date_default_timezone_set(CoreApp\AppConfig::getData("timezone"));
-CoreApp\Session::init();
 
 $url = isset($_GET["url"]) ? $_GET["url"] : "Index";
 

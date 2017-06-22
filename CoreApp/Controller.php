@@ -4,9 +4,10 @@ namespace CoreApp;
 use \CoreApp\Model;
 
 	abstract class Controller {
+
 		public $model;
 
-		public function ClassName($class) {
+		protected function ClassName($class) {
 			return substr(strrchr($class, "\\"), 1);
 		}
 
@@ -29,29 +30,6 @@ use \CoreApp\Model;
 			else {
 				$this->model = null;
 			}
-		}
-
-		protected function setAuthentication() {
-			$this->authentication = Appconfig::getData("authentication");
-			if($this->authentication) {
-				//autchentication on
-				$a = new \CoreApp\Controller\Authentication();
-				return $a;
-			}
-			return null;
-		}
-
-		public function PageModulesPHP($sitekey, $pagemodules) {
-			$c_p = count($pagemodules);
-			for($i=0; $i < $c_p; $i++) {
-				$path = "_cms/$sitekey/modules/php/".$pagemodules[$i]["viewid"]."/".$pagemodules[$i]["module"].".php";
-				$this->includePagemodulPHP($path);
-			}
-		}
-
-		private function includePagemodulPHP($path) {
-			include($path);
-			return;
 		}
 
 		protected function modelDidLoad() {

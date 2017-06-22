@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '3ed6bc0e6d987e0ad49a3dbcabd5f1d7' => $baseDir . '/CoreApp/GF.php',
+    'a4406ac832814ce6b4087f95745515ed' => $baseDir . '/CoreApp/GF.php',
 );

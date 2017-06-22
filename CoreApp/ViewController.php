@@ -1,12 +1,16 @@
 <?php
+
 namespace CoreApp;
+
 	abstract class ViewController extends Controller {
 
 		protected $v;
 		protected $a;
+		public $user;
 
 		public function __construct($objectname) {
-			$this->a = $this->setAuthentication();
+
+			/* Create View Object, SEO and stuff */
 			$this->v = new View($objectname);
 			$this->v->setPageConfig(SEO::getPageConfig($objectname));
 		}
@@ -20,7 +24,7 @@ namespace CoreApp;
 			$this->viewDisplay($bool);
 		}
 
-    protected function viewRenderEnded() {
+   		protected function viewRenderEnded() {
 			//echo '<br>render ended...';
 		}
 	}

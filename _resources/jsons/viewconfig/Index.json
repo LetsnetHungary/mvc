@@ -7,12 +7,12 @@
 	},
 	"seo" :
 	{
-		"title" : "Főoldal",
+		"lang" : "hu",
+		"title" : "Index",
 		"charset" : "UTF-8",
 
 		"meta" :
 		{
-
 		},
 
 		"og" :

@@ -3,7 +3,7 @@
 namespace CoreApp\Controller;
 use \CoreApp;
 
-	class Analytics extends CoreApp\InnerController {
+	class CoreAppController extends CoreApp\InnerController {
 
 		public function __construct() {
 			parent::__construct($this->ClassName(__CLASS__));
