@@ -1,0 +1,5 @@
+[
+    {"type" : "static", "href" : "Index/B", "view" : "Index"}, 
+    {"type" : "static", "href" : "Index/A", "view" : "Index"}, 
+    {"type" : "static", "href" : "Index/T", "view" : "Index"}
+]

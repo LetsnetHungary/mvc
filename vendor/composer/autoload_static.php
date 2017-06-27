@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8140dbf49c4f605b69186a4ff60de746
+class ComposerStaticInitffb82d0b6b082c8a2ae3c912729f1349
 {
     public static $files = array (
         'a4406ac832814ce6b4087f95745515ed' => __DIR__ . '/../..' . '/CoreApp/GF.php',
@@ -37,8 +37,8 @@ class ComposerStaticInit8140dbf49c4f605b69186a4ff60de746
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8140dbf49c4f605b69186a4ff60de746::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8140dbf49c4f605b69186a4ff60de746::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitffb82d0b6b082c8a2ae3c912729f1349::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitffb82d0b6b082c8a2ae3c912729f1349::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

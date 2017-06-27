@@ -1,5 +1,8 @@
 {
     "name" : "letsnet/mvc",
+    "require" : {
+        "twitter/bootstrap" : "v4.0.0-alpha.6"
+    },
     "autoload": {
         "psr-4": {
             "CoreApp\\": "CoreApp/",
