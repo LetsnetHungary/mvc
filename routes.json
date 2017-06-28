@@ -1,5 +1,4 @@
 [
-    {"type" : "static", "href" : "Index/B", "view" : "Index"}, 
-    {"type" : "static", "href" : "Index/A", "view" : "Index"}, 
-    {"type" : "static", "href" : "Index/T", "view" : "Index"}
+    {"href" : "HTTPError", "type" : "static", "view" : "Error"},
+    {"href" : "Statikus", "type" : "static", "view" : "Index"}
 ]
