@@ -1,0 +1,4 @@
+{
+    "routesF" : "App/config/routes.json",
+    "routingClosuresF" : "App/RoutingClosures.php"
+}

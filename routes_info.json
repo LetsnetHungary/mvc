@@ -1,8 +1,0 @@
-{
-    "normal" : {
-        "routes" : ["controller","method","function"]
-    },
-    "static" : {
-        "routes": ["view"]
-    }
-}

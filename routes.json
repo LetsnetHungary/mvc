@@ -1,4 +1,0 @@
-[
-    {"href" : "HTTPError", "type" : "static", "view" : "Error"},
-    {"href" : "Statikus", "type" : "static", "view" : "Index"}
-]
