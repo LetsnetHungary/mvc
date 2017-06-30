@@ -4,10 +4,16 @@
 
         class Controller {
 
-            public $model;
+
+            public $routeINFO;
+
+            protected $model;
+            protected $view;
 
             public function __construct() {
+                $this->view = NULL;
                 $this->model = [];
+                $this->routeINFO = [];
             }
 
             protected function loadModel($modelName) {
@@ -18,6 +24,11 @@
                     $this->model = new $modelName();
                 }
                 return NULL;
+            }
+
+            protected function viewInit($viewName) {
+                $this->view = new View($viewName);
+                $this->view->render($viewName);
             }
 
         }
