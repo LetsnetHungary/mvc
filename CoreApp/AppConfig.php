@@ -14,7 +14,7 @@
 
 		class AppConfig {
 
-			private static $appconfig_real_file = "App/_config/_appconfig_real.json";
+			private static $appconfig_real_file = "App/config/appconfig_real.json";
 
 			/**
 			* The function returns to JSON object by default
@@ -39,7 +39,7 @@
 
 				$config = self::appConfigFile(FALSE);
 
-				$a = arrowString($arrowString);
+				$a = self::arrowString($arrowString);
 				$c_a = count($a);
 
 				for($i = 0; $i < $c_a; $i++) {
@@ -48,6 +48,11 @@
 
 				return($config);
 
+			}
+
+			public static function arrowString($string) {
+				$array = explode("=>", $string);
+				return $array;
 			}
 
 			/* end AppConfig CLASS */

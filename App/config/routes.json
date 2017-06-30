@@ -1,0 +1,5 @@
+[
+    {"href" : "HTTPError", "closure" : "static", "view" : "Error"},
+    {"href" : "Index", "closure" : "static", "view" : "Index"},
+    {"href" : "Index/mvc", "closure" : "mvc", "controller" : "Index", "view" : "Index", "order" : ["{method}", "{argument}", "{argument}"]}
+]

@@ -1,27 +1,22 @@
-<?php
+<?
 
-namespace CoreApp;
+    namespace CoreApp;
+    
+        class Model {
 
-	abstract class Model {
+            public function __construct() {
+                
+            }
 
-		protected $apiProtection;
+            protected function CURLWPOST($url, $postarray) {
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postarray));
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $api_output = curl_exec ($ch);
+                curl_close($ch);
+                return $api_output;
+            }
 
-		public function __construct() {
-			$this->apiProtection = true;
-		}
-
-		protected function setApiProtection($protection) {
-			if($protection == "protected") {
-				$this->apiProtection = TRUE;
-			}
-			return;
-		}
-
-		public function __call($method, $args) {
-			if($this->apiProtection) {
-				echo "ajhsdvf";
-				die();
-			}
-		}
-
-	}
+        }

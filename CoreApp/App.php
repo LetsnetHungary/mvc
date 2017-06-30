@@ -1,32 +1,25 @@
-<?php
+<?
 
-	/**
-	* Letsnet - App
-	*
-	* @author Letsnet <info@letsnet.hu>
-	* @version 0.1
-	* @category CoreApp File
-	* @uses CoreApp namespace
-	*
-	*/
+    namespace CoreApp;
 
-	namespace CoreApp;
+        class App {
 
-	class App {
+            protected $route;
+            protected $closure_to_call;
 
-		/**
-		* @param string $url contains the routing data (controller/method/function)
-		*/
+            public function __construct() {
+                $this->route = new Route();
+                $this->closure_to_call = $this->route->info["closure"];
+                $this->routing();
+            }
 
-		public function __construct($url) {
-			$this->routes = Router::getRoutes($url);
-		}
+            private function routing() {
+                include "CoreApp/RoutingClosures.php";
+                include AppConfig::getData("routingClosuresF");
 
-		/* application build, setting up the controller, perform the method with parameter */
+                $closure_to_call = $this->closure_to_call;
+                $$closure_to_call($this->route->info);
 
-		public function build() {
-			Router::build($this->routes);
-		}
+            }
 
-		/* end App CLASS */
-	}
+        }

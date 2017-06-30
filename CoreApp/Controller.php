@@ -1,38 +1,23 @@
-<?php
+<?
 
-namespace CoreApp;
-use \CoreApp\Model;
+    namespace CoreApp;
 
-	abstract class Controller {
+        class Controller {
 
-		public $model;
+            public $model;
 
-		protected function ClassName($class) {
-			return substr(strrchr($class, "\\"), 1);
-		}
+            public function __construct() {
+                $this->model = [];
+            }
 
-		protected function loadModel($objectname) {
-			$modelName = $objectname.'_Model';
-			$modelFileName = "App/_models/$modelName.php";
-			$coreAppModelFileName = "CoreApp/_models/$modelName.php";
+            protected function loadModel($modelName) {
+                $modelName .= '_Model';
+                $modelF = "App/Models/".$modelName.".php";
+                if(file_exists($modelF)) {
+                    require($modelF);
+                    $this->model = new $modelName();
+                }
+                return NULL;
+            }
 
-			if(file_exists($modelFileName)) {
-				require $modelFileName;
-				$this->modelDidLoad();
-				return new $modelName();;
-			}
-			else if(file_exists($coreAppModelFileName)){
-				require($coreAppModelFileName);
-				$m = "CoreApp\Model\\".$modelName;
-				//$this->modelDidLoad();
-				return new $m();
-			}
-			else {
-				$this->model = null;
-			}
-		}
-
-		protected function modelDidLoad() {
-
-		}
-	}
+        }

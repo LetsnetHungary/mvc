@@ -1,71 +1,38 @@
-<?php
+<?
 
-namespace CoreApp;
+    namespace CoreApp;
 
-	class View {
+        class View {
 
-		protected $mainHead;
-		protected $mainHeader;
-		protected $mainFooter;
-		protected $viewName;
-		protected $seodata;
-		protected $jsdata;
-		protected $cssdata;
-		protected $title = "...Letsnet...";
-		protected $charset = "UTF-8";
+            private $vName;
+            private $files;
+            private $SEO;
 
-		protected $pageModules;
+            public function __construct($vName) {
+                $this->vName = $vName;
+                $this->files = [];
+                $this->SEO = [];
+            }
 
-		public function __construct($viewname) {
-			$this->mainHead = "_views/_includes/_heads/_main.php";
-			$this->mainHeader = "_views/_includes/_headers/_main.php";
-			$this->mainFooter = "_views/_includes/_footers/_main.php";
-			$this->viewName = "_views/$viewname/index.php";
-			$this->custom_head = "_views/$viewname/head.php";
-			$this->custom_header = "_views/$viewname/header.php";
-			$this->custom_footer = "_views/$viewname/footer.php";
-		}
+            private function files() {
+                $this->files["head"] = "Views/includes/main/head.php";
+                $this->files["header"] = "Views/includes/main/header.php";
+                $this->files["view"] = "Views/$this->vName/main.php";
+                $this->files["footer"] = "Views/includes/main/footer.php";
+            }
 
-		public function render() {
-			$this->rHead();
-			require $this->viewName;
-			$this->rF();
-		}
+            private function viewJSON() {
+                $json = "Views/$this->vName/$this->vName.json";
+                $json = file_exists($json) ? json_decode(file_get_contents($json)) : 0;
+                $this->SEO = $json ? $json : 0;
+            }
 
-		private function rHead() {
-			if(file_exists($this->custom_head)) {
-				require $custom_head;
-				return;
-			}
-			require $this->mainHead;
-			return;
-		}
+            public function render() {
+                $this->viewJSON();
+                $this->files();
+                foreach($this->files as $file) {
+                    include($file);
+                }
+            }
 
-		private function rHeader() {
-			if(file_exists($this->custom_header)) {
-				require $custom_header;
-				return;
-			}
-			require $this->mainHeader;
-			return;
-		}
-
-		private function rF() {
-			if(file_exists($this->custom_footer)) {
-	        	require $custom_footer;
-			}
-			else {
-				require $this->mainFooter;
-			}
-		}
-
-		public function setPageConfig($pageconfig) {
-			$this->pageconfig = $pageconfig;
-			$this->seo = $pageconfig->seo;
-			$this->title = $this->seo->title;
-			$this->charset = $this->seo->charset;
-			$this->jsdata = $pageconfig->js;
-			$this->cssdata = $pageconfig->css;
-		}
-
-	}
+        }
