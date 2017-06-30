@@ -27,7 +27,6 @@
                     $rc = count(explode('/', $uri));
                     for($i=0; $i < $rc; $i++) {
                         $return = array_search($uri, array_column($routes, "href"));
-                        $a = explode("/", $uri);
                         if(!$return && strpos($uri, '/') == false) {
                             return $this->getRouteInfo("HTTPError");
                         }
