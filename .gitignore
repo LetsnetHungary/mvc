@@ -1,4 +1,2 @@
 
-App/_config/_appconfig_real.json
-
-_cms/*
+App/config/appconfig_real.json
