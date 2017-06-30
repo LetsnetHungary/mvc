@@ -31,7 +31,10 @@
 
         $controllerFile = "App/Controllers/".$info['controller'].".php";
         if(file_exists($controllerFile)) require $controllerFile;
-        $controller = new $info["controller"]();
+
+        $controller = new $info["controller"]($info);
+
+       // print_r($controller);
 
         if($method) {
             if(method_exists($controller, $method)) {
