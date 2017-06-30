@@ -3,7 +3,7 @@
     class Index extends CoreApp\Controller {
 
         public function autok() {
-            echo "asdf";
+            $this->loadModel(__CLASS__);
         }
-        
+
     }
