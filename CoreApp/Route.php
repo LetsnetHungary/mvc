@@ -13,10 +13,15 @@
             
             public function __construct() {
                 $this->routeInfoFile = AppConfig::getData("routesF");
-                $uri = isset($_GET["url"]) ? $_GET["url"] : "Index";
+                $uri = isset($_GET["url"]) ? $this->uriSecurity($_GET["url"]) : AppConfig::getData("firstRoute");
                 $this->info = $this->getRouteInfo($uri);
                 $this->errorInfo = $this->getRouteInfo("HTTPError");
                 $this->info["requestedURI"] = $uri;
+            }
+
+            private function uriSecurity($uri) {
+                // stringműveletek, hogy biztonságos legyen
+                return $uri;
             }
 
             private function getRouteInfo($uri) {

@@ -22,6 +22,7 @@
                 if(file_exists($modelF)) {
                     require($modelF);
                     $this->model = new $modelName();
+                    return $this->model;
                 }
                 return NULL;
             }

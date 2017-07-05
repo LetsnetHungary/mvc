@@ -4,6 +4,9 @@
 		"../../assets/css/Login.css"
     ],
 	"js" :[
+		"../../assets/js/jquery-3.2.1.min.js",
+		"../../assets/js/fingerprint/fingerprint2.min.js",
+		"../../assets/js/admin/login.js"
     ],
     "fonts" : [
 		"https://fonts.googleapis.com/css?family=Roboto:300,400,500"
