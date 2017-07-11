@@ -7,8 +7,8 @@
 
             public $routeINFO;
 
-            protected $model;
-            protected $view;
+            public $model;
+            public $view;
 
             public function __construct() {
                 $this->view = NULL;
@@ -27,8 +27,9 @@
                 return NULL;
             }
 
-            protected function viewInit($viewName) {
+            protected function viewInit($viewName, $func="") {
                 $this->view = new View($viewName);
+                if(!$func==""){$func();}
                 $this->view->render($viewName);
             }
 

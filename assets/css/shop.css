@@ -1,0 +1,138 @@
+.box {
+    width: 100%;
+    background-color: #f0efed;
+    -webkit-box-shadow: 5px 5px 5px 0 rgba(224,224,222,1);
+    box-shadow: 5px 5px 5px 0 rgba(224,224,222,1);
+    margin-bottom: 20px;
+}
+
+.boxTitle {
+    width: 100%;
+    height: 30px;
+    background-color: #80caa5;
+    color: #fff;
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.boxTitle:hover {
+    color: #000;
+}
+
+.boxAboutImgHolder {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    color:black;
+    margin-right: 5px;
+}
+
+.boxAboutDataHolder {
+    height: 220px;
+    display: flex;
+    align-items: center;
+}
+
+.textHolder {
+    margin: 10px 20px 30px 20px;
+}
+
+.labelHolder {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.labelHolder a {
+    margin-right: 10px;
+    background-color: #80caa5;
+    color: white!important;
+    border-radius: 15%;
+    padding: 3px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.labelHolder a:hover {
+    color: black!important;
+    text-decoration: none;
+}
+.product {
+    width: 190px;
+    height: 190px;
+    background-image: url("http://i.imgur.com/Hyi2stK.jpg");
+    background-size: contain;
+    position: relative;
+}
+
+.price {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0px;
+    right: 0px;
+    width: 100px;
+    height: 40px;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.price h2 {
+    color: white!important;
+    margin: 0!important;
+}
+
+.slide-inner {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-container {
+    height: 250px;
+    padding-left: 50px!important;
+    padding-right: 50px!important;
+    padding-bottom: 30px;
+}
+.boxAboutRow {
+    height: 250px;
+}
+
+.rightColumn {
+    margin: 0px!important;
+}
+@media (min-width: 992px) {
+    .rightColumn {
+        max-height: calc(100vh - 35px);
+        overflow-y: scroll;
+    }
+}
+.shopHolder {
+    height: 220px;
+    cursor: pointer;
+    -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.shopHolder:hover {
+    background-color: #d9d9d9;
+}
+
+.fa {
+    width: 21px;
+    height:21px;
+}

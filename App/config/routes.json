@@ -1,7 +1,12 @@
 [
     {"href" : "HTTPError", "closure" : "static", "view" : "Error"},
-    {"href" : "Index", "closure" : "static", "view" : "Index"},
     {"href" : "admin/login", "closure" : "static", "view" : "Login"},
     {"href" : "Index/mvc", "closure" : "mvc", "controller" : "Index", "view" : "Index", "order" : ["{method}", "{argument}", "{argument}"]},
-    {"href" : "admin/LoginAPI", "closure" : "mvc", "controller" : "LoginAPI", "order" : ["{method}"]}
+    {"href" : "admin/LoginAPI", "closure" : "mvc", "controller" : "LoginAPI", "order" : ["{method}"]},
+    {"href" : "Index", "closure" : "mvc", "controller" : "Index", "view" : "Index", "order" : ["{method}"]},
+    {"href" : "Blog", "closure" : "mvc", "controller" : "Blog", "order" : ["{method}"]},
+    {"href" : "Category", "closure" : "mvc", "controller" : "Category", "order" : ["{method}"]},
+    {"href" : "Contact", "closure" : "mvc", "controller" : "Contact", "order" : ["{method}"]},
+    {"href" : "Shop", "closure" : "mvc", "controller" : "Shop", "order" : ["{method}"]},
+    {"href" : "Shop_API", "closure" : "mvc", "controller" : "Shop_API", "order" : ["{method}"]}
 ]

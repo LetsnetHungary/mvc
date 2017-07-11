@@ -1,0 +1,30 @@
+{
+	"css" :
+	{
+		"0" : "/assets/bootstrap/css/bootstrap.css",
+		"1" : "/assets/font-awesome/css/font-awesome.css",
+        "2" : "/assets/css/category.css"
+	},
+	"js" :
+	{
+		"0" : "/assets/js/jquery.min.js",
+		"1" : "/assets/bootstrap/js/bootstrap.js",
+		"2" : "/assets/js/category.js"
+	},
+    "fonts": {},
+	"seo" :
+	{
+		"lang" : "hu",
+		"title" : "",
+		"charset" : "UTF-8",
+
+		"meta" :
+		{
+		},
+
+		"og" :
+		{
+
+		}
+	}
+}

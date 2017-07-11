@@ -1,0 +1,27 @@
+{
+	"css" :
+	{
+        "1" : "../../assets/bootstrap/css/bootstrap.min.css"
+	},
+	"js" :
+	{
+		"1" : "../../assets/js/jquery.min.js",
+		"2" : "../../assets/bootstrap/js/bootstrap.min.js"
+	},
+    "fonts": {},
+	"seo" :
+	{
+		"lang" : "hu",
+		"title" : "Index",
+		"charset" : "UTF-8",
+
+		"meta" :
+		{
+		},
+
+		"og" :
+		{
+
+		}
+	}
+}
