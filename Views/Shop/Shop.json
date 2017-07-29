@@ -1,0 +1,33 @@
+{
+	"css" :
+	{
+    "1" : "../../assets/css/shop.css",
+    "2" : "../../assets/bootstrap/css/bootstrap.min.css",
+	"3" : "/assets/font-awesome/css/font-awesome.css",
+		"4" : "/assets/slick/slick.css",
+		"5" : "/assets/slick/slick-theme.css"
+	},
+	"js" :
+	{
+		"1" : "../../assets/js/jquery.min.js",
+		"2" : "../../assets/bootstrap/js/bootstrap.min.js",
+        "3" : "/assets/js/shop.js",
+		"4" : "/assets/slick/slick.js"
+	},
+    "fonts" : {},
+	"seo" :
+	{
+		"lang" : "hu",
+		"title" : "Index",
+		"charset" : "UTF-8",
+
+		"meta" :
+		{
+		},
+
+		"og" :
+		{
+
+		}
+	}
+}

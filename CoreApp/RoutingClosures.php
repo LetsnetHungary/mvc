@@ -34,8 +34,6 @@
 
         $controller = new $info["controller"]($info);
 
-       // print_r($controller);
-
         if($method) {
             if(method_exists($controller, $method)) {
 				call_user_func(array($controller, $method), $args);

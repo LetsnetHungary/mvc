@@ -7,8 +7,8 @@
 
             public $routeINFO;
 
-            protected $model;
-            protected $view;
+            public $model;
+            public $view;
 
             public function __construct() {
                 $this->view = NULL;
@@ -22,12 +22,14 @@
                 if(file_exists($modelF)) {
                     require($modelF);
                     $this->model = new $modelName();
+                    return $this->model;
                 }
                 return NULL;
             }
 
-            protected function viewInit($viewName) {
+            protected function viewInit($viewName, $func="") {
                 $this->view = new View($viewName);
+                if(!$func==""){$func();}
                 $this->view->render($viewName);
             }
 
