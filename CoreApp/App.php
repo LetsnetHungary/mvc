@@ -5,58 +5,54 @@
         class App {
 
             public function __construct() {
-                $uri = isset($_GET["url"]) ? $_GET['url'] : "";
-                $controller = $this->chooseController($uri, 0);
-                $href = str_replace("/$controller" . "/", "", "/$uri");
-                $href = explode("/", $href);
-                require("App/Controllers/" . $controller . ".php");
-                $routes = array_column($router->routes, "href");
-
-                foreach($routes as $route) {
-                    $callback = "---";
-                    if($route == $href[0] ) {
-                        $routeNumber = array_search($href[0], $routes);
-                        $callback = $router->routes[$routeNumber]["callback"];    
-                    }
-                }
-
-                foreach($routes as $route) {
-                    if($route == "{param}?" && $callback == "---" ) {
-                        $routeNumber = array_search($route, $routes);
-                        $callback = $router->routes[$routeNumber]["callback"];    
-                    }
-                }
-
-                if(empty($href[1])) {
-                    $routeNumber = array_search("/", $routes);
-                    $callback = $router->routes[$routeNumber]["callback"];    
-                }
-
-                if($callback != "---") {
-                    $callback();
-                }
+                $uri = isset($_GET["url"]) ? explode("/", rtrim($_GET["url"], '/')) : [];
+                $this->routing($uri);
             }
 
-            public function chooseController($uri, $counter) {
-
-                if($uri == "/") {
-                    return "Index";
-                }
-                else if($uri == "" || $uri == "/" && $counter > 0) {
-                    return "Index";
-                }
-
-                $return = false;
-                $controllers = scandir('App/Controllers');
-                foreach($controllers as $controllerFile) {
-                    $file = $uri . ".php";
-                    if($controllerFile == $file) {
-                        $return = $uri;
-                        break;
+            private function loop($uri, $routes, $counter) {
+                $c_routes = count($routes);
+                for($i = 0; $i < $c_routes; $i++) {
+                    if($routes[$i][$counter] != $uri[$counter]) {
+                        unset($routes[$i]);
                     }
                 }
+                $c_routes = count($routes);
+                if($c_routes == 0) {
+                    return "HTTPError";
+                }
+                return $c_routes == 1 ? array_values($routes) : $this->loop($uri, array_values($routes), $counter + 1);
+                
+            }
 
-                return $return ? $return : $this->chooseController(substr($uri, 0, strlen($uri) - 1 - strpos(strrev($uri), '/')), $counter + 1);   
+            private function routing($uri) {
+                $controller = $this->chooseController($uri[0]);
+                $routes = [];
+                unset($uri[0]); $uri = array_values($uri);
+                require("App/Controllers/$controller.php");
+                $r = array_column($router->routes, "href");
+                foreach($r as $route) {
+                    array_push($routes, explode("/", $route));
+                }
+
+                
+
+               $route = $this->loop($uri, $routes, 0);
+
+               
+               print_r($routes);
+               print_r($uri);
+               print_r($route);
+            }
+
+            private function chooseController($href) {
+                $controllers = scandir("App/Controllers");
+                $return = false;
+                foreach($controllers as $controllerFile) {
+                    if($controllerFile ==  $href . ".php"){
+                        $return = $href;
+                    }
+                }
+                return $return ? $href : "HTTPError";
             }
 
         }
