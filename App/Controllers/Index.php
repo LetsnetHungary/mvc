@@ -2,33 +2,30 @@
 
     $router = new CoreApp\Router();
 
-    $router->add("asdf/(:param)?", function() {
-        $view = new CoreApp\View("Index");
-        $view->render();
-    });
+        $router->add("(:param)", function() {
 
-    $router->add("asdf", function() {
-        $view = new CoreApp\View("Index");
-        $view->render();
-    });
+            $view = new CoreApp\View("Index");
+            $view->render();
+        });
+
+        $router->add("A/asdf", function() {
+
+            $view = new CoreApp\View("Index");
+            $view->render();
+        });
 
 
-    $router->add("asdf/asdf", function() {
-        $view = new CoreApp\View("Index");
-        $view->render();
-    });
+        $router->add("A/(:param)", function() {
+            $view = new CoreApp\View("Index");
+            $view->render();
+        });
 
-    $router->add("asdf/asdk", function() {
-        $view = new CoreApp\View("Index");
-        $view->render();
-    });
+        $router->add("A/asdfg", function() {
+            $view = new CoreApp\View("Index");
+            $view->render();
+        });
 
-    $router->add("Index/ajsdfka", function() {
-        echo "ajsbdfjads";
-    });
-
-    $router->add("Help", function() {
-        echo "asjdbfjlasdf";
-        $view = new CoreApp\View("Index");
-        $view->render();
-    });
+        $router->add("B", function() {
+            $view = new CoreApp\View("Index");
+            $view->render();
+        });
