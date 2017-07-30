@@ -1,11 +1,17 @@
 <?
 
-    class Index extends CoreApp\Controller {
+    $router = new CoreApp\Router();
 
-        public function __construct($info) {
-            parent::__construct();
-            $this->loadModel(__CLASS__);
-            $this->viewInit($info["view"]);
-        }
+    $router->add("/", function() {
+        $view = new CoreApp\View("Index");
+        $view->render();
+    });
 
-    }
+    $router->add("{param}?", function() {
+        echo "ajsbdfjads";
+    });
+
+    $router->add("Help", function() {
+        $view = new CoreApp\View("Index");
+        $view->render();
+    });
