@@ -14,18 +14,16 @@
             $view->render();
         });
 
-
-        $router->add("A/(:param)", function() {
-            $view = new CoreApp\View("Index");
-            $view->render();
-        });
-
         $router->add("A/asdfg", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });
 
-        $router->add("B", function() {
+        $router->add("A/(:param)", function() {
+            $view = new CoreApp\View("Index");
+            $view->render();
+        });
+        $router->add("B/c/d", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });

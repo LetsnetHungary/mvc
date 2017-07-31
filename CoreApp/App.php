@@ -11,18 +11,18 @@
             }
 
             private function loop($uri, $routes) {
-              $return_array = [];
+              $return_array = array();
                 $c_uri = count($uri);
                 for($i = 0; $i < $c_uri; $i++) {
+                    array_push($return_array, array());
                     $c_routes = count($routes);
                     for($k = 0; $k < $c_routes; $k++) {
-                        if($routes[$k][$i] != $uri[$i] || $c_uri != count($routes[$k])) {
-                            if(strpos($routes[$k][$i], ":") != 1) {
-                                unset($routes[$k]);
-                            }
-                            else {
-                                array_push($return_array[$i], $k);
-                            }
+                        if(strpos($routes[$k][$i], ":") != 1 && ($routes[$k][$i] != $uri[$i] || $c_uri != count($routes[$k]))) {
+                            unset($routes[$k]);
+                        }
+                        else {
+                          echo"k: ". $k;
+                          array_push($return_array[$i], $k);
                         }
                     }
                     $routes = array_values($routes);
@@ -30,15 +30,16 @@
                 if(empty($routes)) {
                     return "HTTPError";
                 }
-
                 return $this->prepareReturnArray($return_array);
             }
-            private function prepareReturnArray($array)            {
+            private function prepareReturnArray($array){
+              print_r($array);
               $c_a = count($array);
               $index = 0;
-              for ($i=$_a; $i > 0 ; $i++) {
-                $index = $tomb[$i][$index];
+              for ($i = $c_a - 1; $i >= 0 ; $i--) {
+                $index = $array[$i][$index];
               }
+              echo("index: " . $index . "</br>");
               return $index;
             }
             private function routing($uri) {
