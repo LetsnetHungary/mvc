@@ -13,15 +13,14 @@
             private function loop($uri, $routes) {
               $return_array = array();
                 $c_uri = count($uri);
-                for($i = 0; $i < $c_uri; $i++) {
+                for($i = 0; $i <= $c_uri; $i++) {
                     array_push($return_array, array());
                     $c_routes = count($routes);
                     for($k = 0; $k < $c_routes; $k++) {
-                        if(strpos($routes[$k][$i], ":") != 1 && ($routes[$k][$i] != $uri[$i] || $c_uri != count($routes[$k]))) {
+                        if(strpos($routes[$k][$i], ":") != 1 && ($c_uri != count($routes[$k]) || $routes[$k][$i] != $uri[$i])) {
                             unset($routes[$k]);
                         }
                         else {
-                          echo"k: ". $k;
                           array_push($return_array[$i], $k);
                         }
                     }
@@ -30,16 +29,23 @@
                 if(empty($routes)) {
                     return "HTTPError";
                 }
-                return $this->prepareReturnArray($return_array);
+
+                $return_array["function"] = $this->prepareReturnArray($return_array);
+                for ($j=0; $j < $i - 1; $j++) {
+                  if (strpos($routes[0][$j], ":") == 1) {
+                    $return_array[substr($routes[0][$j], 2, strlen($routes[0][$j]) - 3)] = $uri[$j];
+                  }
+                }
+
+                return($return_array);
             }
+
             private function prepareReturnArray($array){
-              print_r($array);
               $c_a = count($array);
               $index = 0;
               for ($i = $c_a - 1; $i >= 0 ; $i--) {
                 $index = $array[$i][$index];
               }
-              echo("index: " . $index . "</br>");
               return $index;
             }
             private function routing($uri) {
@@ -53,11 +59,8 @@
                 }
 
                 $route = $this->loop($uri, $routes);
-
-
-               print_r($routes);
-               print_r($uri);
-               print_r($route);
+                print_r($uri);
+                print_r($route);
             }
 
             private function chooseController($href) {
