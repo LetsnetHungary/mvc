@@ -7,7 +7,7 @@
             public function __construct() {
                 $uri = rtrim($_GET["url"], '/');
                 $uri = isset($_GET["url"]) ? explode("/", $uri) : [];
-                $this->routing($uri);
+                $this->getController($uri);
             }
 
             private function loop($uri, $routes) {
@@ -17,7 +17,7 @@
                     array_push($return_array, array());
                     $c_routes = count($routes);
                     for($k = 0; $k < $c_routes; $k++) {
-                        if(strpos($routes[$k][$i], ":") != 1 && ($c_uri != count($routes[$k]) || $routes[$k][$i] != $uri[$i])) {
+                        if($c_uri != count($routes[$k]) || ($routes[$k][$i] != $uri[$i] && strpos($routes[$k][$i], ":") != 1 )) {
                             unset($routes[$k]);
                         }
                         else {
@@ -27,7 +27,8 @@
                     $routes = array_values($routes);
                 }
                 if(empty($routes)) {
-                    return "HTTPError";
+                  require("App/Controllers/HTTPError.php");
+                  return;
                 }
 
                 $return_array["function"] = $this->prepareReturnArray($return_array);
@@ -48,22 +49,9 @@
               }
               return $index;
             }
-            private function routing($uri) {
-                $controller = $this->chooseController($uri[0]);
-                $routes = [];
-                unset($uri[0]); $uri = array_values($uri);
-                require("App/Controllers/$controller.php");
-                $r = array_column($router->routes, "href");
-                foreach($r as $route) {
-                    array_push($routes, explode("/", $route));
-                }
+            private function getController($uri) {
+                $href = $uri[0];
 
-                $route = $this->loop($uri, $routes);
-                print_r($uri);
-                print_r($route);
-            }
-
-            private function chooseController($href) {
                 $controllers = scandir("App/Controllers");
                 $return = false;
                 foreach($controllers as $controllerFile) {
@@ -71,7 +59,43 @@
                         $return = $href;
                     }
                 }
-                return $return ? $href : "HTTPError";
+                if (!$return) {
+                  require("App/Controllers/HTTPError.php");
+                  return;
+                }
+                else {
+                   require("App/Controllers/$href.php");
+                }
+                unset($uri[0]);
+                $uri = array_values($uri);
+                $this->routing($uri, $this->selectMethod($router));
             }
+            private function routing($uri, $r)
+            {
+              $routes = [];
+              foreach($r as $route) {
+                  array_push($routes, explode("/", $route));
+              }
+
+              $route = $this->loop($uri, $routes);
+              print_r($route);
+            }
+
+            private function selectMethod($r)
+            {
+              switch ($_SERVER['REQUEST_METHOD']) {
+                case 'GET':
+                  return array_column($r->getroutes, "href");
+                case 'POST':
+                  return array_column($r->postroutes, "href");
+                case 'DELETE':
+                  return array_column($r->deleteroutes, "href");
+                case 'PUT':
+                  return array_column($r->putroutes, "href");
+                default:
+                  return;
+              }
+            }
+
 
         }

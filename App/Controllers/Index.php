@@ -2,27 +2,25 @@
 
     $router = new CoreApp\Router();
 
-        $router->add("A/asdf", function() {
-
+        $router->get("A/asdf", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });
 
-        $router->add("A/asdfg", function() {
+        $router->post("A/asdfg", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });
 
-        $router->add("A/(:param)", function() {
+        $router->get("A/(:param)", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });
-        $router->add("B/c/d", function() {
+        $router->put("B/(:p)", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });
-        $router->add("(:param)/(:param2)", function() {
-
+        $router->put("(:param)/(:p)", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });
