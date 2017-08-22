@@ -2,12 +2,12 @@
 
     $router = new CoreApp\Router();
 
-        $router->get("A/asdf", function($parameters) {
+        $router->get("A/asdf", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });
 
-        $router->post("A/asdfg", function($parameters) {
+        $router->post("A/asdfg", function() {
             $view = new CoreApp\View("Index");
             $view->render();
         });
