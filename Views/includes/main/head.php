@@ -1,70 +1,117 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<? if($this->SEO) {?>
-		<meta charset = "<?php echo $this->SEO->seo->charset; ?>">
-		<title><?php echo $this->SEO->seo->title; ?></title>
+      <?php
+        //
+        //CHARSET
+        //
+        if($this->mainjson->seo->charset != null){
+          ?>
+            <meta charset = "<?php echo $this->mainjson->seo->charset; ?>">
+          <?php
+        }
+        if($this->localjson->seo->charset != null){
+          ?>
+            <meta charset = "<?php echo $this->localjson->seo->charset; ?>">
+          <?php
+        }
+        //
+        //META
+        //
+        if ($this->mainjson->seo->meta != null) {
+          foreach($this->mainjson->seo->meta as $meta => $data){
+            ?>
+            <meta name="<?php echo $meta; ?>" content = "<?php echo $data; ?>">
+            <?php
+          }
+        }
+        if ($this->localjson->seo->meta != null) {
+          foreach($this->localjson->seo->meta as $meta => $data){
+            ?>
+            <meta name="<?php echo $meta; ?>" content = "<?php echo $data; ?>">
+            <?php
+          }
+        }
+        //
+        //OG
+        //
+        if ($this->mainjson->seo->og != null) {
+          foreach($this->mainjson->seo->og as $og => $data){
+            ?>
+            <meta name="<?php echo $og; ?>" content = "<?php echo $data; ?>">
+            <?php
+          }
+        }
+        if ($this->localjson->seo->og != null) {
+          foreach($this->localjson->seo->og as $og => $data){
+            ?>
+            <meta name="<?php echo $og; ?>" content = "<?php echo $data; ?>">
+            <?php
+          }
+        }
+        //
+        //CSS
+        //
+        if ($this->mainjson->css != null) {
+          foreach($this->mainjson->css as $css){
+            ?>
+            <link type="text/css" rel="stylesheet" href = "<?php echo $css; ?>">
+            <?php
+          }
+        }
+        if ($this->localjson->css != null) {
+          foreach($this->localjson->css as $css){
+            ?>
+            <link type="text/css" rel="stylesheet" href = "<?php echo $css; ?>">
+            <?php
+          }
+        }
+        //
+        //FONTS
+        //
+        if ($this->mainjson->fonts != null) {
+          foreach($this->mainjson->fonts as $fontdata){
+            ?>
+            <link rel="stylesheet" href = "<?php echo $fontdata; ?>">
+            <?php
+          }
+        }
+        if ($this->localjson->fonts != null) {
+          foreach($this->localjson->fonts as $fontdata){
+            ?>
+            <link rel="stylesheet" href = "<?php echo $fontdata; ?>">
+            <?php
+          }
+        }
+        //
+        //JS
+        //
+        if ($this->mainjson->js != null) {
+          foreach($this->mainjson->js as $js){
+            ?>
+              <script type="text/javascript" src = "<?php echo $js; ?>"></script>
+            <?php
+          }
+        }
+        if ($this->localjson->js != null) {
+          foreach($this->localjson->js as $js){
+            ?>
+              <script type="text/javascript" src = "<?php echo $js; ?>"></script>
+            <?php
+          }
+        }
 
-<?php
-if($this->SEO->seo->meta != null)
-{
-foreach($this->SEO->seo->meta as $meta => $data)
-{
-?>
-		<meta name="<?php echo $meta; ?>" content = "<?php echo $data; ?>">
-<?php
-}
-
-foreach($this->SEO->seo->og as $og => $data)
-{
-?>
-		<meta property="og:<?php echo $og; ?>" content = "<?php echo $data; ?>"/>
-<?php
-}
-}
-?>
-
-<?php
-if($this->SEO->css != null)
-{
-foreach($this->SEO->css as $cssdata)
-{
-?>
-		<link type="text/css" rel="stylesheet" href = "<?php echo $cssdata ?>">
-<?php
-}
-}
-?>
-
-<?php
-if($this->SEO->fonts != null)
-{
-foreach($this->SEO->fonts as $fontdata)
-{
-?>
-		<link rel="stylesheet" href = "<?php echo $fontdata ?>">
-<?php
-}
-}
-?>
-
-<?php
-if($this->SEO->js != null)
-{
-foreach($this->SEO->js as $jsdata)
-{
-?>
-      <script type="text/javascript" src = "<?php echo $jsdata ?>"></script>
-<?php
-}
-}
-?>
+      ?>
+      <title>
+        <?php
+          if($this->localjson->seo->title != null){
+            echo $this->localjson->seo->title;
+          }
+          else if($this->mainjson->seo->title != null){
+            echo $this->mainjson->seo->title;
+          }
+          else echo "Letsnet";
+        ?>
+      </title>
 	</head>
 	<body>
-
-	<? }else {
-?>
-		<title>Letsnet</title>
-	</head>
-	<body>
-<?	} ?>
