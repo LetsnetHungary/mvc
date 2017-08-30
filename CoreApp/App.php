@@ -8,7 +8,7 @@
         private $uri;
 
         public function __construct() {
-          $this->uri = isset($_GET["url"]) ? explode("/", $_GET["url"]) : [];
+          $this->uri = isset($_GET["url"]) ? explode("/", rtrim($_GET["url"], "/")) : [];
         }
 
         public function startApp() {
@@ -44,7 +44,11 @@
           return $controller;
         }
 
-        private function getRouteMatches($routes){
+        private function getRouteMatches($routes) {
+
+          $this->uri = empty($this->uri) ? [""] : $this->uri; 
+
+          $c_uri = count($uri);
 
             foreach ($this->uri as $i => $urival) {
 
@@ -88,7 +92,7 @@
             $this->routes[$route["function"]]["callback"]($route['parameters']);
           }
           else {
-            require("App/Controllers/HTTPError.php");
+            require(_HTTP_ERROR_CONTROLLER);
           }
 
         }
