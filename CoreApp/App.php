@@ -48,17 +48,15 @@
 
           $this->uri = empty($this->uri) ? [""] : $this->uri; 
 
-          $c_uri = count($uri);
+          foreach ($this->uri as $i => $urival) {
 
-            foreach ($this->uri as $i => $urival) {
-
-              foreach($routes as $k => $routeval){
-                if(count($this->uri) != count($routeval) || ($urival != $routeval[$i] && strpos($routeval[$i], ":") != 1)){
-                  unset($routes[$k]);
-                }
+            foreach($routes as $k => $routeval){
+              if(count($this->uri) != count($routeval) || ($urival != $routeval[$i] && strpos($routeval[$i], ":") != 1)){
+                unset($routes[$k]);
               }
-
             }
+
+          }
 
             return empty($routes) ? "HTTPError" : $this->prepareReturnArray($routes);
         }

@@ -1,6 +1,7 @@
 <main>
-    Index Body
-    <?php
-      echo $this->parameters["param"];
-     ?>
+    www.graphed.hu 
+    
+    <br> <br>
+
+    - v2 mvc -
 </main>

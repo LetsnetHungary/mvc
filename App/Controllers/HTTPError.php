@@ -2,6 +2,4 @@
 
     $router = new CoreApp\Router();
 
-        $router->get("", function() {
-            echo "lajbsdlfads";
-        });
+        echo "error Controller";
