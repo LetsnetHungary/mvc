@@ -66,6 +66,7 @@
           $return_array = array();
           reset($routes);
           $return_array["function"] = key($routes);
+          $return_array["parameters"] = [];
 
           foreach($routes[$return_array["function"]] as $key => $value){
             if (strpos($value, ":") == 1) {
